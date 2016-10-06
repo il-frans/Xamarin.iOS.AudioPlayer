@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{5DE52EF5-DB9F-4402-9030-D6A039A78E83}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Example/ViewController.cs">
+    <Files>
+      <File FileName="Example/ViewController.cs" Line="150" Column="5" />
+      <File FileName="AudioPlayer.Source/AudioPlayer.cs" Line="31" Column="3" />
+      <File FileName="AudioPlayer.Source/AudioPlayerItem.cs" Line="104" Column="27" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Example PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.A803543D-01BD-43EE-8786-A96D8CA10664" />
+</Properties>
