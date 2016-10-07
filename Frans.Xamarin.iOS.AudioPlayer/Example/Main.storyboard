@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO" initialViewController="BYZ-38-t0r">
     <dependencies>
         <development version="7000" identifier="xcode"/>
@@ -21,7 +21,7 @@
                             <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jit-5H-Oay">
                                 <rect key="frame" x="14" y="50.5" width="347" height="31"/>
                                 <connections>
-                                    <action selector="PlaybackProgressSlider_ValueChanged:" destination="BYZ-38-t0r" id="8" eventType="valueChanged"/>
+                                    <action selector="PlaybackProgressSlider_ValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="8"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfB-tw-Y3Q">
@@ -50,35 +50,24 @@
                                 </constraints>
                                 <state key="normal" title="Play"/>
                                 <connections>
-                                    <action selector="PlayPauseButton_TouchUpInside:" destination="BYZ-38-t0r" id="13" eventType="touchUpInside"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1um-HU-Ujt">
-                                <rect key="frame" x="157.5" y="210.5" width="60" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="Ryo-Pw-T6Z"/>
-                                    <constraint firstAttribute="height" constant="40" id="op7-FO-dOx"/>
-                                </constraints>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="StopButton_TouchUpInside:" destination="BYZ-38-t0r" id="6" eventType="touchUpInside"/>
+                                    <action selector="PlayPauseButton_TouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="13"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bkc-AD-ELg">
-                                <rect key="frame" x="157.5" y="270.5" width="60" height="40"/>
+                                <rect key="frame" x="157.5" y="210.5" width="60" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="1Ak-jQ-csC"/>
                                     <constraint firstAttribute="height" constant="40" id="kgS-pr-rCz"/>
                                 </constraints>
                                 <state key="normal" title="Replay"/>
                                 <connections>
-                                    <action selector="ReplayButton_TouchUpInside:" destination="BYZ-38-t0r" id="7" eventType="touchUpInside"/>
+                                    <action selector="ReplayButton_TouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7"/>
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="QsL-wv-wo4">
                                 <rect key="frame" x="14" y="566.5" width="347" height="31"/>
                                 <connections>
-                                    <action selector="VolumeSlider_ValueChanged:" destination="BYZ-38-t0r" id="9" eventType="valueChanged"/>
+                                    <action selector="VolumeSlider_ValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="9"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kb-fI-0ih">
@@ -104,7 +93,7 @@
                                 </constraints>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="NextButton_TouchUpInside:" destination="BYZ-38-t0r" id="5" eventType="touchUpInside"/>
+                                    <action selector="NextButton_TouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Taa-ER-20S">
@@ -115,7 +104,7 @@
                                 </constraints>
                                 <state key="normal" title="Previous"/>
                                 <connections>
-                                    <action selector="PreviousButton_TouchUpInside:" destination="BYZ-38-t0r" id="3" eventType="touchUpInside"/>
+                                    <action selector="PreviousButton_TouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -126,10 +115,8 @@
                             <constraint firstItem="zec-c7-Yqx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Hp-Uk-t8N"/>
                             <constraint firstItem="1XT-qE-YxL" firstAttribute="top" secondItem="jit-5H-Oay" secondAttribute="bottom" constant="10" id="3kD-vV-BFK"/>
                             <constraint firstItem="zec-c7-Yqx" firstAttribute="top" secondItem="jit-5H-Oay" secondAttribute="bottom" constant="20" id="Bnr-Uw-AhQ"/>
-                            <constraint firstItem="1um-HU-Ujt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Chg-9d-7gL"/>
                             <constraint firstItem="hfB-tw-Y3Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Czl-mm-yLR"/>
                             <constraint firstItem="Zkz-DF-8DN" firstAttribute="baseline" secondItem="SJK-CQ-ngg" secondAttribute="baseline" id="Jjw-WK-yBj"/>
-                            <constraint firstItem="Bkc-AD-ELg" firstAttribute="top" secondItem="1um-HU-Ujt" secondAttribute="bottom" constant="20" id="Jpr-CK-sgN"/>
                             <constraint firstItem="1XT-qE-YxL" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="M4I-Js-2Pf"/>
                             <constraint firstItem="ZE8-dr-peO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="MWH-V7-jjC"/>
                             <constraint firstItem="QsL-wv-wo4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="NGp-V4-7n8"/>
@@ -138,7 +125,6 @@
                             <constraint firstItem="hfB-tw-Y3Q" firstAttribute="top" secondItem="jit-5H-Oay" secondAttribute="bottom" constant="10" id="Tzu-OW-AlW"/>
                             <constraint firstItem="1kb-fI-0ih" firstAttribute="top" secondItem="QsL-wv-wo4" secondAttribute="bottom" constant="10" id="V39-4z-HA4"/>
                             <constraint firstItem="QsL-wv-wo4" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aJm-6c-Lv2"/>
-                            <constraint firstItem="1um-HU-Ujt" firstAttribute="top" secondItem="SJK-CQ-ngg" secondAttribute="bottom" constant="20" id="gHa-sL-vLt"/>
                             <constraint firstItem="jit-5H-Oay" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="h55-ZN-HAg"/>
                             <constraint firstItem="jit-5H-Oay" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hMc-RL-rY3"/>
                             <constraint firstItem="SJK-CQ-ngg" firstAttribute="top" secondItem="zec-c7-Yqx" secondAttribute="bottom" constant="30" id="hnS-36-bQQ"/>
@@ -148,25 +134,25 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1kb-fI-0ih" secondAttribute="bottom" constant="40" id="r6j-45-wch"/>
                             <constraint firstItem="Bkc-AD-ELg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sMY-Ip-i9k"/>
                             <constraint firstItem="jit-5H-Oay" firstAttribute="top" secondItem="ZE8-dr-peO" secondAttribute="bottom" constant="10" id="xfK-2h-Cko"/>
+                            <constraint firstItem="Bkc-AD-ELg" firstAttribute="top" secondItem="SJK-CQ-ngg" secondAttribute="bottom" constant="20" id="zed-be-QlN"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="TitleLabel" destination="ZE8-dr-peO" id="name-outlet-ZE8-dr-peO"/>
-                        <outlet property="PlaybackProgressSlider" destination="jit-5H-Oay" id="name-outlet-jit-5H-Oay"/>
                         <outlet property="CurrentTrackTimeLabel" destination="hfB-tw-Y3Q" id="name-outlet-hfB-tw-Y3Q"/>
-                        <outlet property="TrackDurationLabel" destination="1XT-qE-YxL" id="name-outlet-1XT-qE-YxL"/>
-                        <outlet property="PreviousButton" destination="Taa-ER-20S" id="name-outlet-Taa-ER-20S"/>
+                        <outlet property="LoadingActivityIndicator" destination="zec-c7-Yqx" id="name-outlet-zec-c7-Yqx"/>
                         <outlet property="NextButton" destination="Zkz-DF-8DN" id="name-outlet-Zkz-DF-8DN"/>
                         <outlet property="PlayPauseButton" destination="SJK-CQ-ngg" id="name-outlet-SJK-CQ-ngg"/>
-                        <outlet property="StopButton" destination="1um-HU-Ujt" id="name-outlet-1um-HU-Ujt"/>
+                        <outlet property="PlaybackProgressSlider" destination="jit-5H-Oay" id="name-outlet-jit-5H-Oay"/>
+                        <outlet property="PreviousButton" destination="Taa-ER-20S" id="name-outlet-Taa-ER-20S"/>
                         <outlet property="ReplayButton" destination="Bkc-AD-ELg" id="name-outlet-Bkc-AD-ELg"/>
+                        <outlet property="TitleLabel" destination="ZE8-dr-peO" id="name-outlet-ZE8-dr-peO"/>
+                        <outlet property="TrackDurationLabel" destination="1XT-qE-YxL" id="name-outlet-1XT-qE-YxL"/>
                         <outlet property="VolumeSlider" destination="QsL-wv-wo4" id="name-outlet-QsL-wv-wo4"/>
-                        <outlet property="LoadingActivityIndicator" destination="zec-c7-Yqx" id="name-outlet-zec-c7-Yqx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.8" y="138.9805"/>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050000000001"/>
         </scene>
     </scenes>
 </document>

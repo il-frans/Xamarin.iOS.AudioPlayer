@@ -28,6 +28,7 @@ namespace Example
 			_AudioPlayer.DidChangeState += AudioPlayer_DidChangeState;
 			_AudioPlayer.DidLoadItem += AudioPlayer_DidLoadItem;
 			_AudioPlayer.DidUpdateMetadata += AudioPlayer_DidUpdateMetadata;
+			_AudioPlayer.DidStartPlayingNewItem += AudioPlayer_DidStartPlayingNewItem;
 
 			_AudioPlayer.Play();
 			// Perform any additional setup after loading the view, typically from a nib.
@@ -35,8 +36,8 @@ namespace Example
 
 		private void resetUI()
 		{
-			PlaybackProgressSlider.Value = 0.5f;
-			VolumeSlider.Value = 0.5f;
+			PlaybackProgressSlider.Value = 0f;
+			VolumeSlider.Value = 1f;
 
 			TitleLabel.Text = "Track Title";
 
@@ -45,10 +46,7 @@ namespace Example
 
 			PlayPauseButton.SetTitle("Play", UIControlState.Normal);
 
-			PlayPauseButton.Enabled = false;
-			//PreviousButton.Enabled = false;
-			//NextButton.Enabled = false;
-			StopButton.Enabled = false;
+			PlaybackProgressSlider.Enabled = false;
 		}
 
 		#region AudioPlayer Events
@@ -63,17 +61,13 @@ namespace Example
 			if (p_Sender.CurrentItem != null)
 			{
 				var currentTime = p_Sender.CurrentItem.CurrentTime;
-				var trackDuration = p_Sender.CurrentItem.Metadata.Duration;
-				var newSliderValue = Convert.ToSingle(currentTime / trackDuration);
 
-				PlaybackProgressSlider.Value = newSliderValue;
-
+				if (PlaybackProgressSlider.Enabled == true)
+				{
+					// Only update the progress if it is enabled. This solves the issue of progress for infinit steams
+					PlaybackProgressSlider.Value = (int)currentTime;
+				}
 				CurrentTrackTimeLabel.Text = secondsToTimeString((int)currentTime);
-
-				// TODO Create an event which is raised at the start of a track playback, this will help in setting the UI with values which do not change during playback
-				TrackDurationLabel.Text = secondsToTimeString((int)trackDuration);
-
-				TitleLabel.Text = p_Sender.CurrentItem.LocalTitle;
 			}
 			else
 			{
@@ -107,12 +101,43 @@ namespace Example
 					break;					
 			}
 
+			switch (p_Sender.CurrentState)
+			{
+				case AudioPlayer.State.Failed:
+				case AudioPlayer.State.Loading:
+					PlaybackProgressSlider.Enabled = false;
+					break;
+				case AudioPlayer.State.Paused:
+				case AudioPlayer.State.Playing:
+				case AudioPlayer.State.Ready:
+					PlaybackProgressSlider.Enabled = true;
+					break;
+			}
+
 			VolumeSlider.Value = _AudioPlayer.Volume;
 		}
 
 		private void AudioPlayer_DidUpdateMetadata(AudioPlayer p_Sender, AudioPlayerItem p_Item)
 		{
 			// use the event to update an UI with data from the metadata once it is fetched.
+		}
+
+		private void AudioPlayer_DidStartPlayingNewItem(AudioPlayer p_Sender, AudioPlayerItem p_Item)
+		{
+			TrackDurationLabel.Text = secondsToTimeString((int)p_Item.Metadata.Duration);
+
+			TitleLabel.Text = p_Sender.CurrentItem.LocalTitle;
+
+			if (double.IsNaN(p_Item.Metadata.Duration.Value) != true)
+			{
+				// NaN may occur if the streaming media is infinit such as radio
+				PlaybackProgressSlider.MaxValue = (float)p_Item.Metadata.Duration;
+			}
+			else
+			{
+				PlaybackProgressSlider.Enabled = false;
+				PlaybackProgressSlider.Value = 0;
+			}
 		}
 
 		#endregion
@@ -127,7 +152,7 @@ namespace Example
 
 		partial void PlaybackProgressSlider_ValueChanged(UISlider sender)
 		{
-			//throw new NotImplementedException();
+			_AudioPlayer?.Seek((int)PlaybackProgressSlider.Value, (_AudioPlayer.CurrentState == AudioPlayer.State.Playing));
 		}
 
 		partial void PreviousButton_TouchUpInside(UIButton sender)
@@ -158,12 +183,6 @@ namespace Example
 		{
 			resetUI();
 			_AudioPlayer.Replay();
-		}
-
-		partial void StopButton_TouchUpInside(UIButton sender)
-		{
-			resetUI();
-			_AudioPlayer.Stop();
 		}
 
 		protected ViewController(IntPtr handle) : base(handle)

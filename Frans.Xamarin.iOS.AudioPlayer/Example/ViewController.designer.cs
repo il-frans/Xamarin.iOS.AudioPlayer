@@ -44,10 +44,6 @@ namespace Example
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton StopButton { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel TitleLabel { get; set; }
 
         [Outlet]
@@ -77,10 +73,6 @@ namespace Example
         [Action ("ReplayButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ReplayButton_TouchUpInside (UIKit.UIButton sender);
-
-        [Action ("StopButton_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void StopButton_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("VolumeSlider_ValueChanged:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -121,11 +113,6 @@ namespace Example
             if (ReplayButton != null) {
                 ReplayButton.Dispose ();
                 ReplayButton = null;
-            }
-
-            if (StopButton != null) {
-                StopButton.Dispose ();
-                StopButton = null;
             }
 
             if (TitleLabel != null) {
