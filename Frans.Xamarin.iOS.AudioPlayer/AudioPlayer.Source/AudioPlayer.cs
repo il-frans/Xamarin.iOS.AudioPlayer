@@ -32,6 +32,7 @@ namespace Frans.Xamarin.iOS.AudioPlayer
 		public event Action<AudioPlayer> DidChangePlaybackProgress;
 		public event Action<AudioPlayer, AudioPlayerItem> DidLoadItem;
 		public event Action<AudioPlayer, AudioPlayerItem> DidUpdateMetadata;
+		public event Action<AudioPlayer, AudioPlayerItem> DidStartPlayingNewItem;
 
 		public int PlayIndex
 		{
@@ -491,10 +492,11 @@ namespace Frans.Xamarin.iOS.AudioPlayer
 				if (p_ShouldPlay == true)
 				{
 					_Player.Play();
+					CurrentState = State.Playing;
 
-					if (CurrentState != State.Playing)
+					if (p_ToSecond == 0)
 					{
-						CurrentState = State.Playing;
+						DidStartPlayingNewItem?.Invoke(this, CurrentItem);
 					}
 				}
 
